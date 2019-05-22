@@ -154,6 +154,12 @@ async function run(context, plugins) {
   nextRelease.gitTag = makeTag(options.tagFormat, nextRelease.version, nextRelease.channel);
   nextRelease.name = makeTag(options.tagFormat, nextRelease.version);
 
+  logger.log('----TSHEETS TEST-----');
+  logger.log('context.branch.type', context.branch.type);
+  logger.log('nextRelease.version', nextRelease.version);
+  logger.log('context.branch.range', context.branch.range);
+  logger.log('context.branch', context.branch);
+
   if (context.branch.type !== 'prerelease' && !semver.satisfies(nextRelease.version, context.branch.range)) {
     throw getError('EINVALIDNEXTVERSION', {
       ...context,
